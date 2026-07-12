@@ -1,12 +1,192 @@
-## Hi there 👋
+<div align="center">
 
-<!--
+<a href="https://github.com/WSA-Installer">
+  <img src="https://raw.githubusercontent.com/WSA-Installer/wsa-installer/main/assets/logo.svg" alt="WSA Installer" width="120">
+</a>
 
-**Here are some ideas to get you started:**
+# WSA Installer
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+### The Modern Windows Subsystem for Android Installation & Management Toolkit
+
+![Organization](https://img.shields.io/badge/Organization-WSA--Installer-1B72C0?style=for-the-badge&logo=github)
+![Repositories](https://img.shields.io/badge/Repositories-4-1B72C0?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+![GitHub Sponsors](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ff69b4?style=for-the-badge)
+
+[Website](https://wsa-installer.github.io) · [Download](https://github.com/WSA-Installer/wsa-installer/releases/latest) · [Documentation](https://github.com/WSA-Installer/wsa-installer/tree/main/docs) · [YouTube](https://www.youtube.com/@AT_Tech_Zone)
+
+</div>
+
+---
+
+<br>
+
+## Our Mission
+
+> Provide an easy, powerful, and reliable way to install, repair, update, customize, and manage Windows Subsystem for Android (WSA) with Google Play Store on Windows 10 and Windows 11 — with a beautiful, intuitive interface and advanced automation.
+
+<br>
+
+## Projects
+
+<div align="center">
+
+| Repository | Description | Stars | Language |
+|:-----------|:------------|:------|:---------|
+| **[wsa-installer](https://github.com/WSA-Installer/wsa-installer)** | Main installer — one-click WSA + Play Store setup with background service, self-update, repair, and file sharing | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-installer?style=social) | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) |
+| **[wsa-webdav](https://github.com/WSA-Installer/wsa-webdav)** | Headless Android WebDAV server APK — access WSA file system from any browser with root support | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-webdav?style=social) | ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white) |
+| **[wsa-website](https://github.com/WSA-Installer/wsa-website)** | Official website — landing page, documentation, download hub | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-website?style=social) | ![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) |
+
+</div>
+
+<br>
+
+## Features
+
+<div align="center">
+
+| Feature | Description |
+|:--------|:------------|
+| Smart System Scan | Detects VT-x/AMD-V, Hyper-V, VirtualMachinePlatform, HypervisorPlatform, WSL via 5 detection methods |
+| One-Click Install | Handles download, extraction, configuration, and registration of WSA end-to-end |
+| Play Store Integration | Patches Google Apps (MindTheGapps 13.0) with automated ADB authorization |
+| Background Service | `WSABackgroundService` monitors WSA status, manages SDK lifecycle, auto-restarts on failure |
+| Self-Update | Checks server for updates with 30-chunk parallel download and silent install |
+| Repair & Uninstall | Complete WSA management with backup, repair, and clean uninstall flows |
+| File Sharing | WebDAV-based drive mounting — access WSA files as Windows network drives |
+| Glass Transparency | Modern Windows 11-inspired UI with configurable alpha-blended transparency |
+| Remote Config | Server-side configuration updates via Rust security gateway |
+| NSIS Installer | Professional Windows setup wizard with maintenance mode |
+
+</div>
+
+<br>
+
+## Technology Stack
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3.14-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-Native-000000?style=for-the-badge&logo=rust&logoColor=white)
+![Flet](https://img.shields.io/badge/Flet-UI-0078D4?style=for-the-badge)
+![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
+![PyQt6](https://img.shields.io/badge/PyQt6-41CD52?style=for-the-badge&logo=qt&logoColor=white)
+![NSIS](https://img.shields.io/badge/NSIS-Installer-FFCC00?style=for-the-badge)
+
+</div>
+
+<br>
+
+## Quick Start
+
+### 1. Download
+
+| File | Size | Description |
+|:-----|:-----|:------------|
+| [WSA_Installer_Setup.exe](https://github.com/WSA-Installer/wsa-installer/releases/latest) | ~228 MB | Professional NSIS installer |
+| [bundle.wsa](https://github.com/WSA-Installer/wsa-installer/releases/latest) | ~1.21 GB | Pre-packaged WSA bundle (optional) |
+
+### 2. Install
+
+1. Download `WSA_Installer_Setup.exe` from the [latest release](https://github.com/WSA-Installer/wsa-installer/releases/latest)
+2. Right-click → **Run as administrator**
+3. Follow the 5-step wizard: **Intro → Check → Install → Play Store → Complete**
+
+### 3. Enjoy
+
+- Play Store appears in Start Menu
+- Launch Android apps directly
+- Background service monitors WSA automatically
+
+<br>
+
+## CLI Reference
+
+```cmd
+WSA_Installer_Setup.exe /S                    :: Silent install
+WSA_Installer_Setup.exe --repair-wsa          :: Repair WSA
+WSA_Installer_Setup.exe --uninstall           :: Uninstall WSA
+WSA_Installer_Setup.exe --file-sharing        :: File sharing setup
+```
+
+<br>
+
+## Architecture
+
+```mermaid
+graph TB
+    subgraph "WSA Installer"
+        GUI[Flet GUI<br/>5-Step Wizard]
+        IL[InstallerLogic<br/>Core Engine]
+        RC[RemoteConfigManager<br/>Server Sync]
+        BG[WSABackgroundService<br/>Windows Service]
+    end
+
+    subgraph "Native Modules"
+        WU[widget_ui.pyd<br/>Rust Security Gateway]
+        PS[playstore_patcher_mem.pyd<br/>Play Store SDK]
+    end
+
+    subgraph "External"
+        ADB[ADB Bridge]
+        WSA[Windows Subsystem<br/>for Android]
+        PY[Embedded Python 3.14]
+    end
+
+    GUI --> IL
+    IL --> RC
+    IL --> WU
+    IL --> PS
+    IL --> ADB
+    ADB --> WSA
+    PS --> PY
+    BG --> WSA
+    RC --> WU
+```
+
+<br>
+
+## Supported Platforms
+
+<div align="center">
+
+| OS | Status |
+|:---|:-------|
+| Windows 11 22H2+ | ![](https://img.shields.io/badge/Supported-3DDC84?style=flat-square) |
+| Windows 11 21H2 | ![](https://img.shields.io/badge/Supported-3DDC84?style=flat-square) |
+| Windows 10 2004+ (build 19041) | ![](https://img.shields.io/badge/Supported-3DDC84?style=flat-square) |
+| Windows 10 < 19041 | ![](https://img.shields.io/badge/Not%20Supported-red?style=flat-square) |
+
+</div>
+
+<br>
+
+## Community
+
+<div align="center">
+
+[![YouTube](https://img.shields.io/badge/YouTube-AT_Tech_Zone-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/@AT_Tech_Zone)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy_Me_a_Coffee-donate-yellow?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/mrcyberdev)
+[![GitHub Discussions](https://img.shields.io/badge/Discussions-Join-1B72C0?style=for-the-badge&logo=github)](https://github.com/WSA-Installer/wsa-installer/discussions)
+
+</div>
+
+<br>
+
+## Contributing
+
+We welcome contributions! See our [Contributing Guide](https://github.com/WSA-Installer/wsa-installer/blob/main/CONTRIBUTING.md) for details.
+
+## License
+
+This project is licensed under the **MIT License** — see [LICENSE](https://github.com/WSA-Installer/wsa-installer/blob/main/LICENSE) for details.
+
+---
+
+<div align="center">
+
+**Built with care by [AT Tech Zone](https://www.youtube.com/@AT_Tech_Zone) — MR CYBER**
+
+![Footer](https://img.shields.io/badge/%C2%A9_2026_AT_Tech_Zone-1B72C0?style=for-the-badge)
+
+</div>
