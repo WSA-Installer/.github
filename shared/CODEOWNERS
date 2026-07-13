@@ -1,0 +1,17 @@
+# Default owners for everything in the repo
+# Each line is a file pattern followed by one or more owners
+
+# Global owners
+* @gshellmr-code
+
+# Build pipeline
+build/ @gshellmr-code
+*.nsi @gshellmr-code
+*.spec @gshellmr-code
+
+# Native modules
+native/ @gshellmr-code
+
+# Documentation
+docs/ @gshellmr-code
+*.md @gshellmr-code
