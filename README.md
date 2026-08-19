@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://github.com/WSA-Installer">
-  <img src="https://raw.githubusercontent.com/WSA-Installer/wsa-installer/main/assets/logo.svg" alt="WSA Installer" width="120">
+  <img src="https://raw.githubusercontent.com/WSA-Installer/wsa-installer/main/assets/icon.png" alt="WSA Installer" width="120">
 </a>
 
 # WSA Installer
@@ -9,7 +9,7 @@
 ### The Modern Windows Subsystem for Android Installation & Management Toolkit
 
 ![Organization](https://img.shields.io/badge/Organization-WSA--Installer-1B72C0?style=for-the-badge&logo=github)
-![Repositories](https://img.shields.io/badge/Repositories-4-1B72C0?style=for-the-badge)
+![Repositories](https://img.shields.io/badge/Repositories-5-1B72C0?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 ![GitHub Sponsors](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ff69b4?style=for-the-badge)
 
@@ -34,8 +34,9 @@
 | Repository | Description | Stars | Language |
 |:-----------|:------------|:------|:---------|
 | **[wsa-installer](https://github.com/WSA-Installer/wsa-installer)** | Main installer — one-click WSA + Play Store setup with background service, self-update, repair, and file sharing | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-installer?style=social) | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) |
+| **[wsa-embedded-tools](https://github.com/WSA-Installer/wsa-installer/tree/main/embedded-tools)** | Source code for all native modules — ApkIconShlExt, WSA Net Provider, aapt++ | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-installer?style=social) | ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) |
 | **[wsa-webdav](https://github.com/WSA-Installer/wsa-webdav)** | Headless Android WebDAV server APK — access WSA file system from any browser with root support | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-webdav?style=social) | ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white) |
-| **[wsa-website](https://github.com/WSA-Installer/wsa-website)** | Official website — landing page, documentation, download hub | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-website?style=social) | ![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white) |
+| **[wsa-website](https://github.com/WSA-Installer/wsa-website)** | Official website — landing page, documentation, download hub, blog | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-website?style=social) | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) |
 
 </div>
 
@@ -47,9 +48,13 @@
 
 | Feature | Description |
 |:--------|:------------|
+| 3-Phase System Check | System validation → Bundle detection → Virtualization bypass |
 | Smart System Scan | Detects VT-x/AMD-V, Hyper-V, VirtualMachinePlatform, HypervisorPlatform, WSL via 5 detection methods |
 | One-Click Install | Handles download, extraction, configuration, and registration of WSA end-to-end |
 | Play Store Integration | Patches Google Apps (MindTheGapps 13.0) with automated ADB authorization |
+| WSA Pacman | Double-click any APK/XAPK/APKS/APKM to install directly into WSA |
+| APK File Handler | Registers as Windows handler for APK files with custom icons |
+| Virtualization Bypass | Auto-fixes Hyper-V, KB uninstall, WSL2, Defender, VBS, FsDepends |
 | Background Service | `WSABackgroundService` monitors WSA status, manages SDK lifecycle, auto-restarts on failure |
 | Self-Update | Checks server for updates with 30-chunk parallel download and silent install |
 | Repair & Uninstall | Complete WSA management with backup, repair, and clean uninstall flows |
@@ -125,6 +130,9 @@ graph TB
     subgraph "Native Modules"
         WU[widget_ui.pyd<br/>Rust Security Gateway]
         PS[playstore_patcher_mem.pyd<br/>Play Store SDK]
+        WI[wsa_init.pyd<br/>WSA Boot/ADB]
+        NP[wsa_net_provider.dll<br/>UNC-to-WebDAV]
+        APK[ApkIconShlExt.dll<br/>APK Icons]
     end
 
     subgraph "External"
@@ -137,12 +145,16 @@ graph TB
     IL --> RC
     IL --> WU
     IL --> PS
+    IL --> WI
     IL --> ADB
     ADB --> WSA
     PS --> PY
     BG --> WSA
+    BG --> NP
     RC --> WU
 ```
+
+> Source code for all native modules is available in [embedded-tools](https://github.com/WSA-Installer/wsa-installer/tree/main/embedded-tools).
 
 <br>
 
