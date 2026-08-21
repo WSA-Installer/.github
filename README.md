@@ -13,7 +13,7 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 ![GitHub Sponsors](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ff69b4?style=for-the-badge)
 
-[Website](https://wsa-installer.github.io) · [Download](https://github.com/WSA-Installer/wsa-installer/releases/latest) · [Documentation](https://github.com/WSA-Installer/wsa-installer/tree/main/docs) · [YouTube](https://www.youtube.com/@AT_Tech_Zone)
+[Website](https://wsa-installer-website.vercel.app) · [Download](https://github.com/WSA-Installer/wsa-installer/releases/latest) · [Documentation](https://github.com/WSA-Installer/wsa-installer/tree/main/docs) · [YouTube](https://www.youtube.com/@AT_Tech_Zone)
 
 </div>
 
@@ -34,9 +34,27 @@
 | Repository | Description | Stars | Language |
 |:-----------|:------------|:------|:---------|
 | **[wsa-installer](https://github.com/WSA-Installer/wsa-installer)** | Main installer — one-click WSA + Play Store setup with background service, self-update, repair, and file sharing | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-installer?style=social) | ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) |
-| **[wsa-embedded-tools](https://github.com/WSA-Installer/wsa-installer/tree/main/embedded-tools)** | Source code for all native modules — ApkIconShlExt, WSA Net Provider, aapt++ | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-installer?style=social) | ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) |
+| **[embedded-tools](https://github.com/WSA-Installer/wsa-installer/tree/main/embedded-tools)** | Source code for all native modules — ApkIconShlExt, WSA Net Provider, aapt++ | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-installer?style=social) | ![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white) |
 | **[wsa-webdav](https://github.com/WSA-Installer/wsa-webdav)** | Headless Android WebDAV server APK — access WSA file system from any browser with root support | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-webdav?style=social) | ![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?logo=kotlin&logoColor=white) |
 | **[wsa-website](https://github.com/WSA-Installer/wsa-website)** | Official website — landing page, documentation, download hub, blog | ![Stars](https://img.shields.io/github/stars/WSA-Installer/wsa-website?style=social) | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) |
+| **[ads-json-data](https://github.com/WSA-Installer/ads-json-data)** | Remote config server — monetization, sponsor content, and update distribution | ![Stars](https://img.shields.io/github/stars/WSA-Installer/ads-json-data?style=social) | ![JSON](https://img.shields.io/badge/JSON-292929?logo=json&logoColor=white) |
+
+</div>
+
+<br>
+
+## v1.2 — What's New
+
+<div align="center">
+
+| Feature | Description |
+|:--------|:------------|
+| WSA Pacman | Double-click any APK/XAPK/APKS/APKM to install directly into WSA |
+| APK File Handler | Registers as Windows handler for APK files with custom icons in Explorer |
+| 3-Phase System Check | System validation → Bundle detection → Virtualization bypass |
+| Virtualization Bypass | Auto-fixes Hyper-V, KB uninstall, WSL2, Defender, VBS, FsDepends |
+| Win10/Win11 Detection | Smart build detection with appropriate GitHub API source |
+| Win10 Bundle | Dedicated offline bundle for Windows 10 users |
 
 </div>
 
@@ -48,13 +66,9 @@
 
 | Feature | Description |
 |:--------|:------------|
-| 3-Phase System Check | System validation → Bundle detection → Virtualization bypass |
 | Smart System Scan | Detects VT-x/AMD-V, Hyper-V, VirtualMachinePlatform, HypervisorPlatform, WSL via 5 detection methods |
 | One-Click Install | Handles download, extraction, configuration, and registration of WSA end-to-end |
 | Play Store Integration | Patches Google Apps (MindTheGapps 13.0) with automated ADB authorization |
-| WSA Pacman | Double-click any APK/XAPK/APKS/APKM to install directly into WSA |
-| APK File Handler | Registers as Windows handler for APK files with custom icons |
-| Virtualization Bypass | Auto-fixes Hyper-V, KB uninstall, WSL2, Defender, VBS, FsDepends |
 | Background Service | `WSABackgroundService` monitors WSA status, manages SDK lifecycle, auto-restarts on failure |
 | Self-Update | Checks server for updates with 30-chunk parallel download and silent install |
 | Repair & Uninstall | Complete WSA management with backup, repair, and clean uninstall flows |
@@ -62,6 +76,7 @@
 | Glass Transparency | Modern Windows 11-inspired UI with configurable alpha-blended transparency |
 | Remote Config | Server-side configuration updates via Rust security gateway |
 | NSIS Installer | Professional Windows setup wizard with maintenance mode |
+| Win10/Win11 Bundles | Separate offline bundles for each Windows version |
 
 </div>
 
@@ -89,7 +104,8 @@
 | File | Size | Description |
 |:-----|:-----|:------------|
 | [WSA_Installer_Setup.exe](https://github.com/WSA-Installer/wsa-installer/releases/latest) | ~228 MB | Professional NSIS installer |
-| [bundle.wsa](https://github.com/WSA-Installer/wsa-installer/releases/latest) | ~1.21 GB | Pre-packaged WSA bundle (optional) |
+| [bundle.wsa (Windows 11)](https://github.com/WSA-Installer/wsa-installer/releases/latest) | ~1.21 GB | Pre-packaged WSA bundle for Windows 11 (optional) |
+| [bundle_win10.wsa (Windows 10)](https://github.com/WSA-Installer/wsa-installer/releases/latest) | ~1.21 GB | Pre-packaged WSA bundle for Windows 10 (optional) |
 
 ### 2. Install
 
